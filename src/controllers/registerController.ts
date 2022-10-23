@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { registerValidation } from "../validation/authValidation";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 interface registerInformations {
   name: string;
