@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 export const login = async (req: Request, res: Response) => {
   const user: loginInformations = { ...req.body };
 
-  const userExists = await prisma.users.findFirst({
+  const userExists = await prisma.user.findFirst({
     where: {
       email: user.email,
     },

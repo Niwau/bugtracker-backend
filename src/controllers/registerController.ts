@@ -21,7 +21,7 @@ export const register = async (req: Request, res: Response) => {
     return res.status(400).json({ response: error });
   }
 
-  const userExists = await prisma.users.findFirst({
+  const userExists = await prisma.user.findFirst({
     where: {
       email: user.email,
     },
@@ -33,11 +33,12 @@ export const register = async (req: Request, res: Response) => {
 
   const hashedPassword = await bcrypt.hash(user.password, 10);
 
-  await prisma.users.create({
+  await prisma.user.create({
     data: {
       name: user.name,
       email: user.email,
       password: hashedPassword,
+      
     },
   });
 
