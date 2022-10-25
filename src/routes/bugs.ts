@@ -9,7 +9,7 @@ import { isUser } from '../middlewares/isUser';
 
 const router = Router()
 
-router.get('/api/bugs', verifyJWT, isUser ,(req : Request, res: Response) => {
+router.get('/api/bugs', verifyJWT, isUser,(req : Request, res: Response) => {
   getBugs(req, res)
 })
 
@@ -17,15 +17,15 @@ router.post('/api/bugs', verifyJWT, isUser,(req : Request, res: Response) => {
   createBug(req, res)
 })
 
-router.get('/api/bugs/:id', verifyJWT, isUser ,(req : Request, res: Response) => {
+router.get('/api/bugs/:id', verifyJWT, isUser,(req : Request, res: Response) => {
   getBug(req, res)
 })
 
-router.delete('/api/bugs/:id', verifyJWT, isUser ,(req : Request, res: Response) => {
+router.delete('/api/bugs/:id', verifyJWT, isUser,(req : Request, res: Response) => {
   deleteBug(req, res)
 })
 
-router.patch('/api/bugs/:id', verifyJWT, isUser ,(req : Request, res: Response) => {
+router.patch('/api/bugs/:id', verifyJWT, isUser,(req : Request, res: Response) => {
   updateBug(req, res)
 })
 

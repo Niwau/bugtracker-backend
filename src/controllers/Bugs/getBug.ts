@@ -5,12 +5,21 @@ const prisma = new PrismaClient()
 
 export const getBug = async (req : Request, res: Response) => {
   
-  const bug = await prisma.bug.findFirst({
-    where: {
-      id: parseInt(req.params.id)
-    }
-  })
+  try {
+    const bug = await prisma.bug.findFirst({
+      where: {
+        id: parseInt(req.params.id)
+      }
+    })
+    return (
+      res.status(200).json({ data: bug })
+    )
+    
+  } catch (error) {
+    return (
+      res.status(400).json({ response: "An error occurred." })
+    )
 
-  return res.status(200).json({ data: bug })
+  }
 
 }

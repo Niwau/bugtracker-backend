@@ -16,7 +16,26 @@ model User {
   email String @unique
   password String
   role Role @default(User)
-  bugs Bug[] 
+  bugs Bug[]
+  team Team? @relation(fields: [teamId], references: [id])
+  teamId Int?
+}
+
+model Team {
+  id Int @id @default(autoincrement())
+  name String @unique
+  members User[] 
+  admins Admin[]
+}
+
+model Admin {
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  password String
+  role Role @default(Admin)
+  teamId Int?
+  team Team? @relation(fields: [teamId],references: [id])
 }
 
 model Bug {
@@ -26,6 +45,7 @@ model Bug {
   status Status
   author User @relation(fields: [authorId], references: [id])
   authorId Int
+  createdAt DateTime @default(now())
 }
 
 enum Role {

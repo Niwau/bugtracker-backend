@@ -5,18 +5,25 @@ const prisma = new PrismaClient()
 
 export const updateBug = async (req : Request, res: Response) => {
 
-  const bugs = await prisma.bug.update({
-    where: {
-      id: parseInt(req.params.id)
-    }, 
-    data: {
-      author: req.body.author,
-      description: req.body.description,
-      status: req.body.status,
-      title: req.body.title,
-    }
-  })
-  
-  return res.status(200).json({ data: bugs })
+  try {
+    const bugs = await prisma.bug.update({
+      where: {
+        id: parseInt(req.params.id)
+      }, 
+      data: {
+        description: req.body.description,
+        status: req.body.status,
+        title: req.body.title,
+      }
+    })
+    return (
+      res.status(200).json({ updated: bugs })
+    )
 
+  } catch (error) {
+    return (
+      res.status(400).json({ response: "An error occurred." })
+    )
+  }
+  
 }
