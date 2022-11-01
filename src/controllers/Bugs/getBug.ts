@@ -12,7 +12,7 @@ export const getBug = async (req : Request, res: Response) => {
       }
     })
     return (
-      res.status(200).json({ data: bug })
+      res.status(200).json(bug)
     )
     
   } catch (error) {

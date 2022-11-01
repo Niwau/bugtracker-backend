@@ -12,7 +12,7 @@ export const deleteBug = async (req: Request, res: Response) => {
     });
 
     return (
-      res.status(200).json({ deleted: bug })
+      res.status(200).json(bug)
     )
   } catch (error) {
     return (

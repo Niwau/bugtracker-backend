@@ -17,7 +17,7 @@ export const updateBug = async (req : Request, res: Response) => {
       }
     })
     return (
-      res.status(200).json({ updated: bugs })
+      res.status(200).json(bugs)
     )
 
   } catch (error) {

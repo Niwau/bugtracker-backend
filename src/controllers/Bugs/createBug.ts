@@ -12,14 +12,14 @@ export const createBug = async (req: Request, res: Response) => {
         description: req.body.description,
         author: {
           connect: {
-            id: req.body.authorId,
+            id: res.locals.userId,
           },
         },
       },
     });
 
     return (
-      res.status(201).json({ created: bug })
+      res.status(201).json(bug)
     )
   } catch (error) {
     return (
